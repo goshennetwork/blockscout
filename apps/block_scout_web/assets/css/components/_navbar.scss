@@ -241,6 +241,9 @@ $navbar-logo-width: 100% !default;
   }
 }
 
+.home-icon {
+	content: url(../static/images/goshen_icon.svg);
+}
 .navbar-logo {
   max-height: $navbar-logo-height;
   width: $navbar-logo-width;
