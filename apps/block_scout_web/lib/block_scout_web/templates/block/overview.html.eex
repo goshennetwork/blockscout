@@ -160,6 +160,14 @@
             </dt>
             <dd class="col-sm-9 col-lg-10"><%= @block.difficulty |> Decimal.to_integer() |> BlockScoutWeb.Cldr.Number.to_string! %></dd>
           </dl>
+          <dl class="row">
+            <dt class="col-sm-3 col-lg-2 text-muted">
+              <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
+              text: gettext("total enqueued transactions processed from genesis to this block.") %>
+              <%= gettext("Total Enqueued Transactions") %>
+            </dt>
+            <dd class="col-sm-9 col-lg-10"><%= (Decimal.to_integer(@block.difficulty) - 1) |> BlockScoutWeb.Cldr.Number.to_string! %></dd>
+          </dl>
           <%= if block_type(@block) == "Block" do %>
             <!-- Total Difficulty -->
             <dl class="row">
@@ -196,6 +204,24 @@
                 <%= gettext("Nonce") %>
               </dt>
               <dd class="col-sm-9 col-lg-10"><%= to_string(@block.nonce) %></dd>
+            </dl>
+
+            <dl class="row">
+              <dt class="col-sm-3 col-lg-2 text-muted">
+                <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
+                text: gettext("total sent l2 to l1 messages") %>
+                <%= gettext("MMR Size") %>
+              </dt>
+              <dd class="col-sm-9 col-lg-10"><%= String.slice(to_string(@block.nonce), 2..-1) |> Base.decode16! |> :binary.decode_unsigned  |> Integer.to_string  %></dd>
+            </dl>
+
+            <dl class="row">
+              <dt class="col-sm-3 col-lg-2 text-muted">
+                <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
+                text: gettext("total sent l2 to l1 messages") %>
+                <%= gettext("MixHash") %>
+              </dt>
+              <dd class="col-sm-9 col-lg-10"><%= to_string(@block.mix_hash)  %></dd>
             </dl>
           <% end %>
           <%= if !is_nil(@block.base_fee_per_gas) do%>

@@ -12,7 +12,7 @@ defmodule Explorer.Chain.Block do
 
   @optional_attrs ~w(size refetch_needed total_difficulty difficulty base_fee_per_gas)a
 
-  @required_attrs ~w(consensus gas_limit gas_used hash miner_hash nonce number parent_hash timestamp)a
+  @required_attrs ~w(consensus gas_limit gas_used hash miner_hash nonce number parent_hash timestamp mix_hash)a
 
   @typedoc """
   How much work is required to find a hash with some number of leading 0s.  It is measured in hashes for PoW
@@ -65,7 +65,8 @@ defmodule Explorer.Chain.Block do
           transactions: %Ecto.Association.NotLoaded{} | [Transaction.t()],
           refetch_needed: boolean(),
           base_fee_per_gas: Wei.t(),
-          is_empty: boolean()
+          is_empty: boolean(),
+          mix_hash: Hash.Full.t(),
         }
 
   @primary_key {:hash, Hash.Full, autogenerate: false}
@@ -82,6 +83,7 @@ defmodule Explorer.Chain.Block do
     field(:refetch_needed, :boolean)
     field(:base_fee_per_gas, Wei)
     field(:is_empty, :boolean)
+    field(:mix_hash, Hash.Full)
 
     timestamps()
 
