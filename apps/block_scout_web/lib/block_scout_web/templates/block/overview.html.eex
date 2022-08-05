@@ -196,15 +196,7 @@
               </dt>
               <dd class="col-sm-9 col-lg-10"><%= BlockScoutWeb.Cldr.Number.to_string!(@block.gas_limit) %></dd>
             </dl>
-            <!-- Nonce -->
-            <dl class="row">
-              <dt class="col-sm-3 col-lg-2 text-muted">
-                <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
-                text: gettext("64-bit hash of value verifying proof-of-work (note: null for POA chains).") %>
-                <%= gettext("Nonce") %>
-              </dt>
-              <dd class="col-sm-9 col-lg-10"><%= to_string(@block.nonce) %></dd>
-            </dl>
+            <!-- Nonce dropped by rongyi -->
 
             <dl class="row">
               <dt class="col-sm-3 col-lg-2 text-muted">
@@ -212,7 +204,7 @@
                 text: gettext("total sent l2 to l1 messages") %>
                 <%= gettext("MMR Size") %>
               </dt>
-              <dd class="col-sm-9 col-lg-10"><%= String.slice(to_string(@block.nonce), 2..-1) |> Base.decode16! |> :binary.decode_unsigned  |> Integer.to_string  %></dd>
+              <dd class="col-sm-9 col-lg-10"><%= String.slice(to_string(@block.nonce), 2..-1) |> String.upcase |> Base.decode16! |> :binary.decode_unsigned  |> Integer.to_string  %></dd>
             </dl>
 
             <dl class="row">
