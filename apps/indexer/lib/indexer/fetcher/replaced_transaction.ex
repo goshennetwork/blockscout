@@ -27,7 +27,7 @@ defmodule Indexer.Fetcher.ReplacedTransaction do
 
   @spec async_fetch([
           %{
-            required(:nonce) => non_neg_integer,
+            required(:nonce) => Deciaml.t(),
             required(:from_address_hash) => Hash.Address.t(),
             required(:block_hash) => Hash.Full.t()
           }
@@ -72,7 +72,7 @@ defmodule Indexer.Fetcher.ReplacedTransaction do
          nonce: nonce,
          from_address_hash: %Hash{bytes: from_address_hash_bytes}
        })
-       when is_integer(nonce) do
+       when true do
     {block_hash_bytes, nonce, from_address_hash_bytes}
   end
 

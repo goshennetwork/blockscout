@@ -1,4 +1,7 @@
 <% apps_menu = Application.get_env(:block_scout_web, :apps_menu) %>
+<% other_nets = dropdown_other_nets() %>
+<% test_nets = test_nets(dropdown_nets()) %>
+<% main_nets = dropdown_head_main_nets() %>
 <nav class="navbar navbar-dark navbar-expand-lg navbar-primary" data-selector="navbar" id="top-navbar">
   <div class="container-fluid navbar-container">
     <img class="navbar-logo home-icon" id="navbar-logo"/>
@@ -127,7 +130,7 @@
           </li>
         <% end %>
         <li class="nav-item dropdown">
-          <a class="nav-link topnav-nav-link active-icon <%= if dropdown_nets() != [], do: "dropdown-toggle js-show-network-selector" %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link topnav-nav-link active-icon <%= if dropdown_nets() != [], do: "dropdown-toggle" %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="nav-link-icon">
               <%= render BlockScoutWeb.IconsView, "_active_icon.html" %>
             </span>
