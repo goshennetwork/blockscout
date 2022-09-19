@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-xs-12 col-lg-3">
 
-        <p class="footer-info-text">Goshen is an fully Ethereum-equivalent Optimistic Rollup based on a RISC-V fraud-proof system.</p>
+        <p class="footer-info-text">Goshen is A Fully Ethereum-equivalent Optimistic Rollup based on a RISC-V fraud-proof system.</p>
         <div class="footer-social-icons">
           <a href="https://medium.com/@goshen" rel="noreferrer" target="_blank" class="footer-social-icon" title='Blog'>
             <div class="footer-social-icon-container fontawesome-icon blog"></div>
